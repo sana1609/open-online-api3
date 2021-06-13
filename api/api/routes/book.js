@@ -17,6 +17,16 @@ router.get('/:id', function(req, res, next) {
         res.json(result);
     });
 });
+router.get('/isbn/:id', function(req, res, next) {
+    const {id} = req.params;
+    const sql = "Select * from book where isbn= '"+id+"'";
+    con.query(sql, function(err, result){
+        if (err) throw err;
+        res.json(result);
+    });
+});
+
+router.get('/borrow/')
 
 
 module.exports = router;
