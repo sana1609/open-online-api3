@@ -18,5 +18,14 @@ router.get('/:id', function(req, res, next) {
     });
 });
 
+router.get('/book/:id', function(req, res, next) {
+    const {id} = req.params;
+    const sql = "Select * from borrow where bookid= '"+id+"'";
+    con.query(sql, function(err, result){
+        if (err) throw err;
+        res.json(result);
+    });
+});
+
 
 module.exports = router;
